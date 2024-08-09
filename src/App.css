@@ -1,38 +1,543 @@
-.App {
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+}
+
+.navbar {
+  background-color: #ffffff; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: #000;
+  text-decoration: none;
+}
+
+
+.nav-links a:hover{
+  border-bottom: 2px solid rgb(95, 95, 95);
+  transition: 2s;
+}
+.active-link{
+  text-decoration: underline;
+}
+
+.hero {
+  background-image: url(./components/images/mountain.png);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hero-content {
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  @media (max-width: 998px) {
+    width: 80%;
+    margin: 10px auto;
+  }
+  @media (max-width: 562px) {
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  @media (max-width: 998px) {
+    width: 80%;
+    margin: 10px auto;
+    font-size: 15px;
+  }
+}
+
+.hero button {
+  background-color: #ff8800;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  width: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  @media (max-width: 998px) {
+    width: 80%;
+    
+  }
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  /* width: 100%;
+  position: absolute;
+  bottom: 0; */
+}
+.footer p {
+  font-size: 15px;
+}
+/* FIND VAN PAGE */
+.find-van-page{
+  width: 100%;
+  /* background-color: rgb(255, 246, 233); */
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+.find-van-page h1 {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+  margin-left: 4%;
+  color: #383838;
+  @media (max-width:454px) {
+    
+  }
+}
+
+.simple, .luxury, .rugged {
+  background-color: rgb(255, 205, 140);
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.clear-filters{
+  border-bottom: 1px solid rgb(95, 95, 95);
+  transition: 2s;
+  cursor: pointer;
+}
+@media (max-width:454px) {
+  .simple, .luxury, .rugged, .clear-filters{
+    font-size: 10px;
+  }
+}
+.options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  @media (max-width:454px) {
+    gap: 10px;
+  }
+}
+.simple:hover{
+  background-color: #ff6600;
+  color: rgb(255, 205, 140);
+}
+.luxury:hover{
+  background-color: #0a110f;
+  color: rgb(255, 205, 140);
+}
+.rugged:hover{
+  background-color: #053f29;
+  color: rgb(255, 205, 140);
+}
+
+/* App.css */
+
+.simple,
+.luxury,
+.rugged{
+  background-color: rgb(255, 205, 140);
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.simple.selected {
+  background-color: #ff6600; /* Use hover color */
+  color: rgb(255, 205, 140);
+}
+
+.luxury.selected {
+  background-color: #0a110f; /* Use hover color */
+  color: rgb(255, 205, 140);
+}
+
+.rugged.selected {
+  background-color: #053f29; /* Use hover color */
+  color: rgb(255, 205, 140);
+}
+
+.clear-filters.selected {
+  color: #000; /* You can change this to a color indicating no filter */
+}
+
+/* Optional: Add a transition for a smoother effect */
+.simple.selected,
+.luxury.selected,
+.rugged.selected {
+  transition: background-color 0.3s ease;
+}
+
+
+/* CARS  */
+.image{
+  /* background-color: #ff6600; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  @media (max-width: 438px) {
+    width: 150px;
+    height: 150px;
+  }
+  @media (max-width: 332px) {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.image img{
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.image img:hover{
+  transform: scale(1.03);
+  border: 1px solid #6e6e6e;
+}
+
+.text-wrapper p{
+  font-size: 11px;
+  margin-left: 75px;
+  @media (max-width: 332px) {
+    font-size: 10px;
+  }
+  span{
+    font-weight: bold;
+    font-size: 13px;
+    @media (max-width: 438px) {
+      font-weight: normal;
+     }
+     @media (max-width: 332px) {
+      font-size: 11px;
+    }
+  }
+  @media (max-width: 438px) {
+   margin-left: 20px;
+  }
+}
+.text-wrapper .heading{
+  font-weight: bold;
+  font-size: 13px;
+  margin: 10px 0;
+  @media (max-width: 438px) {
+    font-weight: normal;
+   }
+   @media (max-width: 332px) {
+    font-size: 11px;
+  }
+}
+.text-wrapper{
+  display: flex;
+}
+.simple-tag{
+  background-color: #ff6600;
+  width: max-content;
+  padding: 5px 20px;
+  color: rgb(252, 216, 169);
+  border-radius: 5px;
+  margin-top: -16px;
+  font-size: 12px;
+  @media (max-width: 332px) {
+    font-size: 10px;
+  }
+}
+.rugged-tag{
+  background-color: #053f29;
+  width: max-content;
+  padding: 5px 20px;
+  color: rgb(252, 216, 169);
+  border-radius: 5px;
+  margin-top: -16px;
+  font-size: 12px;
+  @media (max-width: 332px) {
+    font-size: 10px;
+  }
+}
+.luxury-tag{
+  background-color: #0a110f;
+  width: max-content;
+  padding: 5px 20px;
+  color: rgb(252, 216, 169);
+  border-radius: 5px;
+  margin-top: -16px;
+  font-size: 12px;
+  @media (max-width: 332px) {
+    font-size: 10px;
+  }
+}
+
+.cars-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 40px;
+}
+.car-card:hover{
+cursor: pointer;
+}
+
+/* BACK TO ALL VANS LINK */
+.back-link {
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+  i{
+    margin-right: 10px;
+    transition: 1s;
+  }
+}
+/* Example styles for the new AuthHeader */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-link {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+/* VAN DESCRIPTION */
+.van-details-page{
+  padding-bottom: 50px;
+  margin-bottom: -40px;
+  @media (min-width:654px) {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  }
+}
+.description-info{
+  display: flex;
+  gap: 5%;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 70px;
+}
+.car-image{
+  width: 300px;
+  height: 300px;
+  /* background-color: #ff6600; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.car-image img{
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.rent-button{
+  background-color: #ff8800;
   color: white;
+  border: none;
+  padding: 10px 0;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.type{
+  border: 2px solid #ff8800;
+  padding: 10px 20px;
+  width: max-content;
+  border-radius: 5px;
+}
+.information{
+  width: 50%;
+  @media (max-width:602px) {
+    width: 80%;
+  }
+}
+/* ABOUTPAGE */
+.about-image{
+  /* background-color: #ff6600; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* position: fixed; */
+  margin-top: 30px;
+}
+.about-image img{
+  flex-grow: 1;
+  object-fit: contain;
+  @media (max-width: 784px) {
+  width: 100%;
+  height: 100%;
+  }
+}
+.about-info{
+  padding: 20px;
+}
+.coloured-part{
+  background-color: #ffa43b;
+  width: 90%;
+  padding:10px 20px 20px;
+  border-radius: 5px;
+}
+.explore-btn{
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* SIGN IN FORM */
+.contact-section{
+  height: 70vh;
+}
+.sign-in-page {
+  width: 100%;
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffeecf;
+  @media (max-width: 456px) {
+    max-width: 80%;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid rgb(206, 206, 206);
+  border-radius: 4px;
+  width: 94%;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.sign-in-button {
+  padding: 10px 20px;
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.sign-in-button:hover {
+  background-color: #e65c00;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+a {
+  color: #ff6600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+/* CONTACT PAGE */
+.contact-page h1{
+  text-align: center;
+  margin-top: 200px;
+}
+.contact-page{
+  width: 100%;
+  height: 50vh;
+}
+.return-button{
+  background-color: #000;
+  padding: 10px;
+  color: white;
+  border: none;
+  width: 50%;
+  cursor: pointer;
+  border-radius: 5px;
+  @media (max-width:654px) {
+    width: 90%;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.btn{
+  display: flex;
+  justify-content: center;
 }
