@@ -354,7 +354,11 @@ cursor: pointer;
   color: #333;
   text-decoration: none;
 }
-
+@media (max-width:406px) {
+  .logo-link{
+   font-size: 10px;
+  }
+}
 .nav-links a {
   margin-left: 20px;
   color: #000000;
