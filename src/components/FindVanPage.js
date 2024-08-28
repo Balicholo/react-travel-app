@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import img154 from './images/Rectangle-154.png';
 import img163 from './images/Rectangle-163.png';
 import img55 from './images/image-55.png';
@@ -17,6 +18,7 @@ const vanData = [
 
 function FindVanPage() {
   const [filter, setFilter] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const filteredVans = vanData.filter((van) => (filter ? van.type === filter : true));
 
@@ -29,7 +31,7 @@ function FindVanPage() {
   };
 
   const handleCardClick = (van) => {
-    window.open(`/van-details/${van.id}`, '_blank'); // Open in a new tab
+    navigate(`/van-details/${van.id}`); // Use navigate for redirection
   };
 
   return (
