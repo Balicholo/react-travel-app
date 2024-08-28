@@ -10,7 +10,7 @@ function Header() {
       <div className='logo'>
         <Link to='/' className='logo-link'>#CarRental</Link>
       </div>
-      <div className='nav-links'>
+      <div className='nav-links1'>
         <Link to='/about' className={location.pathname === "/about" ? "active":""}style={{textDecoration: location.pathname === "/about" ? "underline":"none"}}>About</Link>
         <Link to='/find-van' className={location.pathname === "/find-van" ? "active":""}style={{textDecoration: location.pathname === "/find-van" ? "underline":"none"}}>Vans</Link>
       </div>

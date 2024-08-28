@@ -340,12 +340,14 @@ cursor: pointer;
   }
 }
 /* Example styles for the new AuthHeader */
+/* Navbar styles */
 .navbar {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
   background-color: #f8f9fa;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .logo-link {
@@ -354,20 +356,78 @@ cursor: pointer;
   color: #333;
   text-decoration: none;
 }
-@media (max-width:406px) {
-  .logo-link{
-   font-size: 10px;
-  }
+
+.nav-links, .nav-links1 {
+  display: flex;
+  align-items: center;
 }
-.nav-links a {
+
+.nav-links, .nav-links1 a {
   margin-left: 20px;
   color: #000000;
   text-decoration: none;
 }
 
-.nav-links a:hover {
-  text-decoration: underline;
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
 }
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 412px) {
+  .logo-link {
+    font-size: 10px;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #f8f9fa;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 60px);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    padding-top: 20px;
+    display: none; /* Hide links initially */
+  }
+
+  .nav-links.open {
+    display: flex; /* Show links when open */
+    transform: translateX(0); /* Slide in animation */
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger icon on small screens */
+  }
+}
+
 /* VAN DESCRIPTION */
 .van-details-page{
   padding-bottom: 50px;
