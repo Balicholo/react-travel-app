@@ -1,42 +1,64 @@
-// src/App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { auth } from './components/SignInPages/firebase'; // Adjust the import path as needed
 import Header from './components/Header';
 import AuthHeader from './components/AuthHeader';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import FindVanPage from './components/FindVanPage';
 import AboutPage from './components/AboutPage';
-import SignInPage from './components/SignInPage';
 import ContactPage from './components/ContactPage';
-import './App.css';
+import Register from './components/SignInPages/register'; // Adjust the import path
+import Profile from './components/SignInPages/profile'; // Adjust the import path
+import Login from './components/SignInPages/login';
 import VanDetailsPage from './components/VanDetailsPage';
+import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe(); // Clean up subscription
+  }, []);
+
   return (
     <Router>
       <div className='App'>
-        <AppRoutes />
+        <AppRoutes user={user} />
+        <ToastContainer />
       </div>
     </Router>
   );
 }
 
-function AppRoutes() {
+function AppRoutes({ user }) {
   const location = useLocation();
-
-  const isAuthPage = location.pathname === '/sign-in' || location.pathname === '/contact';
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/contact' || location.pathname === '/register';
 
   return (
     <>
       {isAuthPage ? <AuthHeader /> : <Header />}
       <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/find-van' element={<FindVanPage />} />
-        <Route path='/about' element={<AboutPage />} />
-        <Route path='/sign-in' element={<SignInPage />} />
-        <Route path='/contact' element={<ContactPage />} />
-        <Route path='/van-details/:id' element={<VanDetailsPage />} /> {/* Add this route */}
+        <Route
+          path="/"
+          element={user ? <Navigate to="/profile" /> : <HomePage />}
+        />
+        <Route path="/find-van" element={<FindVanPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/last" element={<ContactPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/signin" element={<Login />} />
+        <Route path="/contact" element={user ? <Navigate to="/profile" /> : <ContactPage />} />
+        <Route path="/login" element={user ? <Navigate to="/profile" /> : <Login />} />
+        <Route path="/register" element={user ? <Navigate to="/profile" /> : <Register />} />
+        <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />
+        <Route path="/van-details/:id" element={<VanDetailsPage />} />
       </Routes>
       <Footer />
     </>

@@ -24,7 +24,7 @@ function VanDetailsPage() {
   const navigate = useNavigate(); // useNavigate instead of useHistory
 
   const handleButtonClick = () => {
-    navigate('/sign-in'); // use navigate instead of history.push
+    navigate('/signin'); // use navigate instead of history.push
   };
 
   if (!van) {
