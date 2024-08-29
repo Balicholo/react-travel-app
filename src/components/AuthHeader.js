@@ -16,7 +16,7 @@ function AuthHeader() {
   return (
     <nav className='navbar'>
       <div className='logo'>
-        <Link to='/' className='logo-link'>#CarRental</Link>
+        <Link to='/home' className='logo-link'>#CarRental</Link>
       </div>
       <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <Link
