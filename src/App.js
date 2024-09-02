@@ -52,7 +52,7 @@ function AppRoutes({ user }) {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/signin" element={<Login />} />
-        {/* <Route path="/contact" element={user ? <Navigate to="/profile" /> : <ContactPage />} /> */}
+        <Route path="/contact" element={user ? <Navigate to="/profile" /> : <Profile />} />
         <Route path="/login" element={user ? <Navigate to="/profile" /> : <Login />} />
         <Route path="/register" element={user ? <Navigate to="/profile" /> : <Register />} />
         <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />
