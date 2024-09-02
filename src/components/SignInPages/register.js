@@ -12,10 +12,12 @@ function Register() {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // State to manage loading
   const navigate = useNavigate(); // Initialize navigate
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when submitting
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
@@ -30,12 +32,14 @@ function Register() {
       toast.success("User Registered Successfully!!", {
         position: "top-center",
       });
+      setLoading(false); // Set loading to false after success
       // Redirect to login after successful registration
       navigate("/login");
     } catch (error) {
       toast.error(error.message, {
         position: "bottom-center",
       });
+      setLoading(false); // Set loading to false after failure
     }
   };
 
@@ -95,8 +99,8 @@ function Register() {
       </div>
 
       <div className="d-grid">
-        <button type="submit" className="btn btn-primary">
-          Sign Up
+        <button type="submit" className="btn btn-primary" disabled={loading}>
+          {loading ? "Registering..." : "Sign Up"} {/* Show loading text while loading */}
         </button>
       </div>
       <p className="forgot-password text-right">

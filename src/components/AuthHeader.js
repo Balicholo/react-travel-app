@@ -20,9 +20,9 @@ function AuthHeader() {
       </div>
       <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <Link
-          to='/sign-in'
-          className={location.pathname === '/sign-in' ? 'active' : ''}
-          style={{ textDecoration: location.pathname === '/sign-in' ? 'underline' : 'none' }}
+          to='/signin'
+          className={location.pathname === '/signin' ? 'active' : ''}
+          style={{ textDecoration: location.pathname === '/signin' ? 'underline' : 'none' }}
           onClick={handleLinkClick}
         >
           Host

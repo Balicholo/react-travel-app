@@ -7,7 +7,6 @@ import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import FindVanPage from './components/FindVanPage';
 import AboutPage from './components/AboutPage';
-import ContactPage from './components/ContactPage';
 import Register from './components/SignInPages/register'; // Adjust the import path
 import Profile from './components/SignInPages/profile'; // Adjust the import path
 import Login from './components/SignInPages/login';
@@ -39,7 +38,7 @@ function App() {
 
 function AppRoutes({ user }) {
   const location = useLocation();
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/contact' || location.pathname === '/register';
+  const isAuthPage = location.pathname === '/login'|| location.pathname === '/register' || location.pathname === '/signin' || location.pathname === '/profile';
 
   return (
     <>
@@ -51,10 +50,9 @@ function AppRoutes({ user }) {
         />
         <Route path="/find-van" element={<FindVanPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/last" element={<ContactPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/signin" element={<Login />} />
-        <Route path="/contact" element={user ? <Navigate to="/profile" /> : <ContactPage />} />
+        {/* <Route path="/contact" element={user ? <Navigate to="/profile" /> : <ContactPage />} /> */}
         <Route path="/login" element={user ? <Navigate to="/profile" /> : <Login />} />
         <Route path="/register" element={user ? <Navigate to="/profile" /> : <Register />} />
         <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />

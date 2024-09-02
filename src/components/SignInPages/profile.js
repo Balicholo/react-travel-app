@@ -45,18 +45,18 @@ function Profile() {
               alt=""
             />
           </div>
-          <h3>Welcome {userDetails.firstName}</h3>
-          <div>
+          <h1>Welcome {userDetails.firstName}, Unfortunately page was not found</h1>
+          {/* <div className="user-details">
             <p>Email: {userDetails.email}</p>
             <p>First Name: {userDetails.firstName}</p>
             <p>Last Name: {userDetails.lastName}</p>
-          </div>
+          </div> */}
           <div className="buttons-wrapper">
           <button className="btn btn-primary" onClick={handleLogout}>
             Logout
           </button>
-          <button className="btn btn-secondary" onClick={() => navigate("/last")}>
-            Continue
+          <button className="btn btn-secondary" onClick={() => navigate("/home")}>
+            Return to home
           </button>
           </div>
 
