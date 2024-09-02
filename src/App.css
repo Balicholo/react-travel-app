@@ -129,9 +129,6 @@ body{
   text-align: left;
   margin-left: 4%;
   color: #383838;
-  @media (max-width:454px) {
-    
-  }
 }
 
 .simple, .luxury, .rugged {
@@ -413,6 +410,7 @@ cursor: pointer;
     transition: transform 0.3s ease-in-out;
     padding-top: 20px;
     display: none; /* Hide links initially */
+    z-index: 1;
   }
 
   .nav-links.open {
